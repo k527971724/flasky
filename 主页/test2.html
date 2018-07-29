@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<script src="static/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){          //按钮触发
+    $.getJSON("/mydict",function(result){        
+      $.each(result, function(i, field){
+        $("div").append(field + " ");                 //函数里要干嘛自己写
+      });
+    });
+  });
+});
+</script>
+</head>
+
+<body>
+
+<button>获得 JSON 数据</button>
+<div>替换</div>  
+
+</body>
+</html>

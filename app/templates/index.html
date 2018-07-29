@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+<div class="page-header">{# 标题 #}
+    <h1>
+        Hello, 
+        {% if current_user.is_authenticated %}
+        {#current_user由Flask-login定义，在视图函数和模板中自动可用#}
+        {#表示当前用户User#}
+            {{ current_user.username }}
+        {% else %}
+            Stranger
+        {% endif %}
+        !
+    </h1>
+</div>
+<div>{# 填写博客表单 #}
+    {% if current_user.can(Permission.WRITE) %}
+    {{ wtf.quick_form(form) }}
+    {% endif %}
+</div>
+{% include '_posts.html' %}
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.index') }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

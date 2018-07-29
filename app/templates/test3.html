@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery Ajax Test</title>
+    <script src="static/jquery.min.js">
+    </script>
+<script>
+$(document).ready(function(){
+    $(".btn8").click(function(){
+        $.getJSON("/api/cooperation/test/108",function(data){
+            $.each(data, function(i, field){
+                $("div").append(field + " ");
+            });
+        });
+    });
+});
+ 
+</script>
+
+</head>
+<body>
+    <h1>Ajax Test</h1>
+    
+    <button class="btn8">get</button><br/><br/>
+    <div>替换</div>   
+
+
+</body>
+</html>
